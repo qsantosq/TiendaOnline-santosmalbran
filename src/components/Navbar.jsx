@@ -1,4 +1,5 @@
 import React from 'react'
+import CartWidget from './CartWidget'
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -23,7 +24,8 @@ const Navbar = () => {
                         </ul>
                     </nav>
                 </div>
-
+                
+                <CartWidget />
                 <div>
                     <button className="botones-menu">Login</button>
                 </div>
