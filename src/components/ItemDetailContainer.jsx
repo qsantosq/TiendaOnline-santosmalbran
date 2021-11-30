@@ -1,8 +1,8 @@
 import React from 'react'
-import ItemList from './ItemList'
+import ItemDetail from './ItemDetail'
 import { useEffect } from 'react'
 
-export const getItems = () => {
+const getItems = () => {
     return new Promise((resolve, reject) => {
         const object = [
             {
@@ -25,40 +25,44 @@ export const getItems = () => {
                 precio:" $ 1050",
             }
         ]
-        setTimeout(() => resolve(object), 2000)
+        setTimeout(() => resolve(object), 3000)
     })
 }
 
 
-    const ItemListContainer = () => {
-       
-    const [products, setProducts] = React.useState([])
+const ItemDetailContainer = () => {
+
+   
+    const [productosdetalles, setProductosdetalles] = React.useState([])
+  
+
 
     useEffect(() => {
         const list = getItems()
-
         list.then(response => {
-            setProducts(response)
+            setProductosdetalles(response)
         })
 
         return (() => {
-            setProducts([])
+            setProductosdetalles([])
+            
         })
-
-
+        
     }, [])
+     const detalle = productosdetalles[0]
 
-   
-    console.log(products)
+    
+        // console.log("Producto particular", detalle)
+
+    // console.log("Detalles del producto", products[0])
+
+
     return (
-
         <div>
-            <h1>Tienda Santos-Malbran </h1>
-          
-            <ItemList products={products}/>
-         
+            <ItemDetail detalle={detalle} />
         </div>
     )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer
+
