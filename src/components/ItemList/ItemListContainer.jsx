@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemList from './ItemList'
+import ItemList from '../ItemList/ItemList'
 import { useEffect } from 'react'
 
 export const getItems = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import CartWidget from './CartWidget'
+import CartWidget from '../CartWidget/CartWidget'
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -8,7 +8,7 @@ const Navbar = () => {
             <header className="contenedor-header">
 
                 <div className="contenedor-logo">
-                <img src={require("../assest/logo.png").default} className="logo" />
+                <img src={require("../../assest/logo.png").default} className="logo" />
                 </div>
 
                 <div className="contenedor-incio">

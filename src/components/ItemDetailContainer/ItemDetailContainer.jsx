@@ -3,6 +3,8 @@ import ItemDetail from './ItemDetail'
 import { useEffect } from 'react'
 
 const getItems = () => {
+
+
     return new Promise((resolve, reject) => {
         const object = [
             {
@@ -33,7 +35,7 @@ const getItems = () => {
 const ItemDetailContainer = () => {
 
    
-    const [productosdetalles, setProductosdetalles] = React.useState([])
+    const [productosdetalles, setProductosdetalles] = React.useState()
   
 
 
@@ -49,20 +51,15 @@ const ItemDetailContainer = () => {
         })
         
     }, [])
-     const detalle = productosdetalles[0]
+
 
     
-        // console.log("Producto particular", detalle)
-
-    // console.log("Detalles del producto", products[0])
-
 
     return (
         <div>
-            <ItemDetail detalle={detalle} />
+            <ItemDetail detalle={productosdetalles} />
         </div>
     )
 }
 
 export default ItemDetailContainer
-
