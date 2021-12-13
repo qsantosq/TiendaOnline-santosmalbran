@@ -1,7 +1,8 @@
 import React from 'react'
 import "./item.css"
+import { Link } from "react-router-dom"
 
-const Item = ({ product }) => {
+const Item = ({ productos }) => {
 
     
     return (
@@ -9,19 +10,19 @@ const Item = ({ product }) => {
             <div className="contenedor-items">
 
                 <div className="contenedor-tituloItems">
-                    <h2> {product.name} </h2>
+                    <h2> {productos.name} </h2>
                 </div>
 
                 <div className="contenedor-imagen"> 
-                    <img src={product.img} alt={product.name} className="img-prod" /> 
+                    <img src={productos.img} alt={productos.name} className="img-prod" /> 
                 </div>
 
                 <div className="contenedor-precio"> 
-                    <p>{product.precio}</p>
+                    <p>{productos.precio}</p>
                 </div>
-                <button>
+                <Link to={`/detail/${productos.id}`}>
                     Pedir
-                </button>
+                </Link>
 
             </div>
         </div>

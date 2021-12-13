@@ -1,10 +1,10 @@
 import React from 'react'
 import "./ItemDetail.css"
 
-const ItemDetail = ( { detalle }) => {
-    console.log("Aca estan los productos en ItemDetail", detalle)
+const ItemDetail = (  productos  ) => {
+    console.log("Aca estan los productos en ItemDetail", productos)
 
-if (detalle === undefined){
+if ({productos} === undefined){
 
 return(
 <>
@@ -19,14 +19,14 @@ return(
 
              <h1> Detalle del producto </h1>
             <div className="contenedor-detalle">
-                  <img src={detalle[0].img} alt={detalle[0].name} className="img-detalle" />
+                  <img src={productos.img} alt= {productos.name} className="img-detalle" />
                     <div className="contenedor-desc">
-                          <h2 className="titulo">{detalle[0].name}</h2>
-                         <p className="desc">{detalle[0].description}</p>
+                          <h2 className="titulo">{productos.name}</h2>
+                         <p className="desc">{productos.description}</p>
                     <div>
                         <div className="contenedor-precio">
                             <div className="precio">
-                                  <p className="color-precio">{detalle[0].precio}</p>
+                                  <p className="color-precio">{productos.precio}</p>
                             </div>
 
                             <button className="button-volver">Lista de Productos</button>

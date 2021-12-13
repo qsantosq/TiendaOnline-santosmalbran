@@ -1,8 +1,9 @@
 import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import "./Navbar.css"
+import { Link } from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({ productos = []} ) => {
     return (
 
             <header className="contenedor-header">
@@ -12,15 +13,15 @@ const Navbar = () => {
                 </div>
 
                 <div className="contenedor-incio">
-                   <button className="botones-menu">Inicio</button>
+                   <Link to={"/"} className="botones-menu">Inicio</Link>
                 </div>
 
                 <div className="contenedor-navbar">
                     <nav>
                         <ul className="contenedor-ul">
-                            <li><a href="#" className="estilos-a">Hamburguesas</a></li>
-                            <li><a href="#" className="estilos-a">Empanadas</a></li>
-                            <li><a href="#" className="estilos-a">Pizza</a></li>
+                            <Link to={`/Hamburguesas/${productos.id}`}>Hamburguesas</Link>
+                            <Link to={'/category/Empanadas'}>Empanadas</Link>
+                            <Link to={'/category/Pizza'}>Pizza</Link>
                         </ul>
                     </nav>
                 </div>
@@ -35,3 +36,7 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+// to={`/${product.category}`}
+

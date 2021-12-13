@@ -2,14 +2,14 @@ import React from 'react'
 import Item from '../Item/Item'
 
 
-const ItemList = ({products}) => {
-    console.log("Aca estan los productos en ItemList", products)
+const ItemList = ({productos = []}) => {
+    console.log("Aca estan los productos en ItemList", productos)
     return ( 
        
         <ul>
-            {products.map((product) => {
+            {productos.map((productos) => {
                 return (
-                    <Item key={product.id} product={product}/>
+                    <Item key={productos.id} productos={productos}/>
                 )
             })}        
         </ul>
@@ -18,3 +18,4 @@ const ItemList = ({products}) => {
 }
 
 export default ItemList
+
