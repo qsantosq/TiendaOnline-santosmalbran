@@ -1,7 +1,7 @@
 import React from 'react'
 import "./ItemDetail.css"
 
-const ItemD = ({productos}) => 
+const ItemCard = ({productos}) => 
 {
     return (
         <div className="contenedor-general">
@@ -29,4 +29,4 @@ const ItemD = ({productos}) =>
     )
 }
 
-export default ItemD;
+export default ItemCard;
