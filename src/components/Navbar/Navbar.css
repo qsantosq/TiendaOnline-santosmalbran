@@ -6,7 +6,9 @@
     background-color: rgb(184, 184, 184);
     height: 80px;
 }
-
+.link{
+    margin: 0 20px;
+}
 
 .logo{
     height: 50px;

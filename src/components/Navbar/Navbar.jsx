@@ -2,8 +2,24 @@ import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import "./Navbar.css"
 import { Link } from "react-router-dom"
+import { getItemByCategory } from '../../products'
+import { useEffect } from 'react'
 
-const Navbar = ({ productos = []} ) => {
+
+const Navbar = ( ) => {
+
+
+    const [categorias, setCategorias] = React.useState([])
+
+    useEffect (() => {
+        getItemByCategory().then(categorias => {
+            setCategorias(categorias)
+        })
+    }, [])
+   
+    console.log("estas son las categorias" + categorias)
+
+
     return (
 
             <header className="contenedor-header">
@@ -17,13 +33,7 @@ const Navbar = ({ productos = []} ) => {
                 </div>
 
                 <div className="contenedor-navbar">
-                    <nav>
-                        <ul className="contenedor-ul">
-                            <Link to={`/Hamburguesas/${productos.id}`}>Hamburguesas</Link>
-                            <Link to={'/category/Empanadas'}>Empanadas</Link>
-                            <Link to={'/category/Pizza'}>Pizza</Link>
-                        </ul>
-                    </nav>
+                   {categorias.map(cat => <Link key={cat.id} className='link' to={`/categoria/${cat.id}`}>{cat.description}</Link>)}
                 </div>
                 
                 <CartWidget />
@@ -37,6 +47,4 @@ const Navbar = ({ productos = []} ) => {
 
 export default Navbar
 
-
-// to={`/${product.category}`}
 

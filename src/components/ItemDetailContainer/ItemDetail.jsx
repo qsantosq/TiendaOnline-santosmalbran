@@ -1,43 +1,31 @@
 import React from 'react'
-import "./ItemDetail.css"
+import ItemCard from './ItemCard'
 
-const ItemDetail = (  productos  ) => {
-    console.log("Aca estan los productos en ItemDetail", productos)
 
-if ({productos} === undefined){
+const ItemDetail = ( { productos }) => {
+    console.log("Aca este es el producto en ItemDetail", productos)
 
-return(
-<>
-<h1>Cargando</h1>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="loading" srcset="" />
-</>
+    if (productos === undefined){
 
-)
-}else{
-    return (
-        <div className="contenedor-general">
+        return(
+        <>
+        <h1>Cargando</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="loading" srcset="" />
+        </>
+        
+        )
+        }else{
 
-             <h1> Detalle del producto </h1>
-            <div className="contenedor-detalle">
-                  <img src={productos.img} alt= {productos.name} className="img-detalle" />
-                    <div className="contenedor-desc">
-                          <h2 className="titulo">{productos.name}</h2>
-                         <p className="desc">{productos.description}</p>
-                    <div>
-                        <div className="contenedor-precio">
-                            <div className="precio">
-                                  <p className="color-precio">{productos.precio}</p>
-                            </div>
-
-                            <button className="button-volver">Lista de Productos</button>
-                        </div>
-
-                    </div>
+            return(
+                <div className="contenedor-caja">
+                    <ItemCard key={productos.paramId} productos={productos} />
                 </div>
-            </div>
+            );
+        }}
 
-        </div>
-    )
-}}
 
-export default ItemDetail
+    
+
+    export default ItemDetail
+
+   

@@ -1,7 +1,6 @@
 import React from 'react'
 import "./ItemCount.css"
 
-
 const ItemCount = (props) => {
 
     const [onAdd, setonAdd] = React.useState(1)

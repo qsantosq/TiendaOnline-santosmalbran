@@ -2,8 +2,13 @@ import React from 'react'
 import Item from '../Item/Item'
 
 
-const ItemList = ({productos = []}) => {
+
+const ItemList = ({productos}) => {
     console.log("Aca estan los productos en ItemList", productos)
+
+
+
+
     return ( 
        
         <ul>
@@ -18,4 +23,3 @@ const ItemList = ({productos = []}) => {
 }
 
 export default ItemList
-

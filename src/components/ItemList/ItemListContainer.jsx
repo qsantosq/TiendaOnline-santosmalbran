@@ -1,40 +1,38 @@
 import React from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useEffect } from 'react'
-import { getItemByCategory } from '../../products';
-import { getProducts } from '../../products';
 import { useParams } from 'react-router-dom';
+import { getProducts } from '../../products';
 
 
-const ItemListContainer = () => {
+    const ItemListContainer = () => {
+       
 
-    const [productos, setProductos] = React.useState([]); 
-    const { categoriaId } = useParams();
+    const [productos, setProductos] = React.useState([])
+    const {categoriaId} = useParams();
+    console.log(categoriaId);
 
-    useEffect(() => {
-
-
-        ( async () => {
-            if(categoriaId !== undefined){
-                const categoria = await getItemByCategory(categoriaId);
-                setProductos(categoria);
-            } else {
-                const categoria = await getProducts();
-                setProductos(categoria);
-            }
-        })();
-    }, [categoriaId]);
-
-
+    useEffect(() => {        
+        getProducts(categoriaId).then(item => {
+            setProductos(item)
+        }).catch(err  => {
+            console.log(err)
+        })
+        return (() => {
+            setProductos([])
+        })
+    }, [categoriaId])
+ 
     return (
 
         <div>
             <h1>Tienda Santos-Malbran </h1>
           
             <ItemList productos={productos}/>
-         
         </div>
     )
 }
 
 export default ItemListContainer
+
+

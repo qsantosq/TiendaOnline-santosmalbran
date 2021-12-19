@@ -2,6 +2,7 @@ import React from 'react'
 import "./item.css"
 import { Link } from "react-router-dom"
 
+
 const Item = ({ productos }) => {
 
     
@@ -23,7 +24,6 @@ const Item = ({ productos }) => {
                 <Link to={`/detail/${productos.id}`}>
                     Pedir
                 </Link>
-
             </div>
         </div>
 

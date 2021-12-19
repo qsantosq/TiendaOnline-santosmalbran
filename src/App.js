@@ -8,8 +8,15 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+
+
+
 function App() {
+
+  
   return (
+
+    
     <div className="App">
       <Router>
         <Navbar />
@@ -21,6 +28,11 @@ function App() {
             <Route path="/detail/:paramId">
                  <ItemDetailContainer />
             </Route>
+
+            <Route exact path="/categoria/:categoriaId">
+               <ItemListContainer />
+             </Route>
+
 
             <Route path="/count">
                  <ItemCount stock={5} initial={1} />
