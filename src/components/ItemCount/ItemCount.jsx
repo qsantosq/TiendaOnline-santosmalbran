@@ -1,61 +1,40 @@
 import React from 'react'
 import "./ItemCount.css"
 
-const ItemCount = (props) => {
+const ItemCount = ({onConfirm, maxQuantity}) => {
 
-    const [onAdd, setonAdd] = React.useState(1)
-
-
-    const suma = () => {
-        
-        
-
-        if( onAdd < props.stock){
-            setonAdd(onAdd + 1)
-        } else{
-            setonAdd(5)
+        const [onAdd, setOnAdd] = React.useState(1)
+    
+        //funcion sumar
+        const sumar = () => {
+            if ( onAdd < maxQuantity){
+                setOnAdd (onAdd + 1);}
         }
-
-    }
-
-
-    const resta = () => {
-        
-        setonAdd(onAdd - 1 )
-
-        if( onAdd > props.initial){
-            setonAdd(onAdd - 1)
-        } else{
-            setonAdd(1)
+        //funcion restar
+        const restar = () => {
+            if ( onAdd >= 2){
+                setOnAdd (onAdd - 1);}
         }
-
-    }
-
-
-
-
-    console.log(onAdd)
-
 
     return (
 
         <div className="contador">
             
             <div className="contenedor-contador">
-                <button className="resta" onClick={() => resta()}>
+                <button className="resta" onClick={() => restar()}>
                     -
                 </button>
 
-                <div className="stock">
-                    <p> {onAdd} </p>
-                </div>
+                <p className="stock">
+                    {onAdd}
+                </p>
 
-                <button className="suma" onClick={() => suma()}>
+                <button className="suma" onClick={() => sumar() }>
                     +
                 </button>
             </div>
 
-            <button class="agregar-carrito">
+            <button class="agregar-carrito" onClick={() => onConfirm(onAdd)}>
                 Agregar a carrito
             </button>
 

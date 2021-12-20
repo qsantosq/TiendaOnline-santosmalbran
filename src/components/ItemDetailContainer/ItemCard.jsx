@@ -1,8 +1,9 @@
 import React from 'react'
 import "./ItemDetail.css"
 
-const ItemCard = ({productos}) => 
-{
+
+const ItemCard = ({productos}) => {
+
     return (
         <div className="contenedor-general">
 
@@ -23,6 +24,7 @@ const ItemCard = ({productos}) =>
 
                     </div>
                 </div>
+
             </div>
 
         </div>
