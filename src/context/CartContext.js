@@ -3,19 +3,37 @@ import React from 'react';
 const CartContext = React.createContext();
 
 export const Provider = ({children}) => {
+    
 
     const [carro, setCarro] = React.useState([]);
+    
+
     const carrito = (id) => {
         return carro.some((productos) => productos.id === id);
     };
 
+
+    const Cantidad = (productos, quantity) =>{
+        const carrito = [...carro];
+        carrito.forEach((productos) => {
+            productos.id === productos.id && (productos.cantidad += quantity)
+        })
+     }  
+     
+
     const addItem = (productos, quantity) => {
         if (carrito (productos.id)){
-            alert("se agrego al carrito")
+            Cantidad(productos, quantity);
+            alert("se agrego al carrito");
+ 
         } else {
-            setCarro([...carro, { ...productos, verCantidad: quantity}]);
+            setCarro([...carro, { ...productos, cantidad: quantity}]);
+
         }
+ 
     };
+
+
 
     const remove = (id) => {
       const borrar = carro.filter((productos) => productos.id !== id)
@@ -27,6 +45,9 @@ export const Provider = ({children}) => {
         alert("se limpio el carrito")
         setCarro([])
     }
+
+
+
 
     return (
 
