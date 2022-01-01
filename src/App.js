@@ -3,6 +3,8 @@ import ItemCount from './components/ItemCount/ItemCount';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 import Navbar from './components/Navbar/Navbar';
+import Cart from './components/Cart/Cart'
+import { Provider } from './context/CartContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +20,9 @@ function App() {
 
     
     <div className="App">
+      
+      <Provider>
+
       <Router>
         <Navbar />
          <Switch>
@@ -33,6 +38,10 @@ function App() {
                <ItemListContainer />
              </Route>
 
+             <Route exact path='/cart'>
+              <Cart/>
+            </Route>    
+
 
             <Route path="/count">
                  <ItemCount stock={5} initial={1} />
@@ -40,6 +49,9 @@ function App() {
         </Switch> 
 
       </Router>
+
+      </Provider>
+
     </div>
   );
 }
