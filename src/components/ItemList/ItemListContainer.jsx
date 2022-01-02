@@ -2,26 +2,48 @@ import React from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { getProducts } from '../../products';
-
+import {db} from "../../services/firabase/firebase"
+import {collection, getDocs, query, where} from "firebase/firestore";
 
     const ItemListContainer = () => {
-       
-
+  
     const [productos, setProductos] = React.useState([])
+    // const [loading, setLoading] = React.useState(true)
     const {categoriaId} = useParams();
     console.log(categoriaId);
 
-    useEffect(() => {        
-        getProducts(categoriaId).then(item => {
-            setProductos(item)
-        }).catch(err  => {
-            console.log(err)
-        })
+    useEffect(() => {   
+        if(!categoriaId) {
+            getDocs(collection(db, "items")).then((querySnapshot) => {
+                console.log(querySnapshot)
+                const products = querySnapshot.docs.map(doc => {
+                    console.log(doc)
+                    return {id: doc.id, ...doc.data()}
+                } )
+                setProductos(products)
+            })
+        }else {
+            getDocs(query(collection(db, "items"), where("categoria", "==", categoriaId))).then((querySnapshot) => {
+                console.log(querySnapshot)
+                const products = querySnapshot.docs.map(doc => {
+                    console.log(doc)
+                    return {id: doc.id, ...doc.data()}
+                } )
+                setProductos(products)
+            })
+        }
+ 
+        //z setLoading(true)     
+   
         return (() => {
             setProductos([])
         })
+        
     }, [categoriaId])
+
+    //  if (loading){
+    //      return <h1>Loading..</h1>
+    //  }
  
     return (
 
